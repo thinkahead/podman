@@ -25,6 +25,9 @@ vagrant destroy
 
 ## References
 https://www.redhat.com/sysadmin/replace-docker-podman-macos
+
 https://www.redhat.com/sysadmin/compose-podman-pods
+
 https://www.redhat.com/sysadmin/podman-play-kube
+
 https://developers.redhat.com/blog/2019/01/15/podman-managing-containers-pods#create_a_pod
