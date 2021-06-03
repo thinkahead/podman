@@ -6,18 +6,24 @@ Install Vagrant from https://www.vagrantup.com/downloads with Binary install. YO
 ```
 cd /Users/karve/Downloads/6x6orchestration/podman
 vagrant up
+# vagrant destroy
 ```
 
-Modify the VirtualBox to forward port 8080 to host
+## Modify the VirtualBox to forward port 8080 to host
 ```
 VBoxManage controlvm podman natpf1 "jupyter,tcp,,8080,,8080"
 ```
+
+## Wordpress deployment with 2 containers in a pod
 ```
 podman play kube wordpress-deployment.yaml
 podman pod stop wordpress-pod-0
 podman pod start wordpress-pod-0
 podman pod ps --filter label=app=wordpress -q | xargs podman pod rm -f
+```
 
+## Wordpress pods
+```
 podman play kube wordpress-pod.yaml
 podman container ps -ap
 podman pod ps
@@ -27,14 +33,19 @@ podman container rm runtop
 podman pod stop wordpress
 podman pod start wordpress
 podman pod rm wordpress -f
-
-vagrant destroy
 ```
 
-Running a Notebook using Jupyter
+## Running a Notebook using Jupyter
 ```
 podman play kube notebook.yaml
 podman container logs test-notebook-pod-0-test-notebook-container
+```
+
+## Running a nginx deployment with replicas
+The YAML specifies three replicas, so Podman created three pods, each with one container.
+```
+podman play kube nginx-deployment.yaml
+podman pod ps --filter label=app=nginx
 ```
 
 ## References
