@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-notebook
+  labels:
+    app: test-notebook
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-notebook
+  template:
+    metadata:
+      labels:
+        app: test-notebook
+    spec:
+      containers:
+      - name: test-notebook-container
+        image: docker.io/jupyter/tensorflow-notebook
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8888
+          hostPort: 8080
+          protocol: TCP
+        resources: {}
+        securityContext:
+          allowPrivilegeEscalation: true
+          capabilities: {}
+          privileged: false
+          readOnlyRootFilesystem: false
+          seLinuxOptions: {}
+        workingDir: /home/jovyan

@@ -1,11 +1,19 @@
 # podman
 
 ## Commands
+Install Vagrant from https://www.vagrantup.com/downloads with Binary install. YOu may need to upgrade ```vagrant plugin update```
+
 ```
 cd /Users/karve/Downloads/6x6orchestration/podman
 vagrant up
+```
 
-podman play kube wordpress-deployment.yaml # 
+Modify the VirtualBox to forward port 8080 to host
+```
+VBoxManage controlvm podman natpf1 "jupyter,tcp,,8080,,8080"
+```
+```
+podman play kube wordpress-deployment.yaml
 podman pod stop wordpress-pod-0
 podman pod start wordpress-pod-0
 podman pod ps --filter label=app=wordpress -q | xargs podman pod rm -f
@@ -21,6 +29,12 @@ podman pod start wordpress
 podman pod rm wordpress -f
 
 vagrant destroy
+```
+
+Running a Notebook using Jupyter
+```
+podman play kube notebook.yaml
+podman container logs test-notebook-pod-0-test-notebook-container
 ```
 
 ## References
