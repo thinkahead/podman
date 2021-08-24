@@ -1,7 +1,7 @@
 # podman
 
 ## Commands
-Install Vagrant from https://www.vagrantup.com/downloads with Binary install. YOu may need to upgrade ```vagrant plugin update```
+Install Vagrant from https://www.vagrantup.com/downloads with Binary install. You may need to upgrade ```vagrant plugin update```
 
 ```
 cd /Users/karve/Downloads/6x6orchestration/podman
@@ -56,3 +56,8 @@ https://www.redhat.com/sysadmin/compose-podman-pods
 https://www.redhat.com/sysadmin/podman-play-kube
 
 https://developers.redhat.com/blog/2019/01/15/podman-managing-containers-pods#create_a_pod
+
+https://github.com/rhjhunt/container-workshop
+
+https://itnext.io/podman-and-skopeo-on-macos-1b3b9cf21e60
+https://developers.redhat.com/blog/2020/02/12/podman-for-macos-sort-of#
