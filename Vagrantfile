@@ -1,5 +1,5 @@
 Vagrant.configure("2") do |config|
-  config.vm.box = "fedora/34-cloud-base"
+  config.vm.box = "fedora/35-cloud-base"
   config.vm.network "forwarded_port", guest: 6445, host: 6445, protocol: "tcp", id: "kcp"
   config.vm.network "forwarded_port", guest: 8080, host: 8081, protocol: "tcp", id: "podman-rest-api"
 
@@ -9,6 +9,8 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.provision "shell", inline: <<-SHELL
+    dnf -y copr enable rhcontainerbot/podman4
+    #dnf -y upgrade podman
     dnf install -y podman
 
     groupadd -f -r podman
