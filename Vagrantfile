@@ -1,7 +1,8 @@
 Vagrant.configure("2") do |config|
-  config.vm.box = "fedora/35-cloud-base"
+  config.vm.box = "fedora/37-cloud-base"
   config.vm.network "forwarded_port", guest: 6445, host: 6445, protocol: "tcp", id: "kcp"
   config.vm.network "forwarded_port", guest: 8080, host: 8081, protocol: "tcp", id: "podman-rest-api"
+  config.disksize.size = '80GB'
 
   config.vm.provider "virtualbox" do |vb|
     vb.memory = "4096"
