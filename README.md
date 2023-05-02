@@ -61,3 +61,20 @@ https://github.com/rhjhunt/container-workshop
 
 https://itnext.io/podman-and-skopeo-on-macos-1b3b9cf21e60
 https://developers.redhat.com/blog/2020/02/12/podman-for-macos-sort-of#
+
+## Larger disk size
+```
+#Cannot umount /home. Once inside I switched to root and closed my own session like this:
+vagrant ssh
+cd /
+exec sudo su
+umount /home
+
+fdisk /dev/sda
+Delete partition 5 and recreate it with full size
+w
+btrfs filesystem resize max /
+reboot
+
+vagrant ssh
+```
